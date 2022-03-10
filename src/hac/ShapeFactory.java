@@ -23,11 +23,20 @@ public class ShapeFactory {
         map.put(type, shapeCreateFunction);
     }
 
+    /**
+     * the factory main method creates a shape based on the type.
+     * @param shapeType the type of shape to create
+     * @return the shape
+     * @throws IllegalArgumentException if the shape type is not supported
+     */
     public Shape getShape(ShapeType shapeType) {
+        // get the supplier for the shape type: a reference to the "new" method
         Supplier<Shape> shapeFunc = map.get(shapeType);
+
         if (shapeFunc != null) {
-            return shapeFunc.get();
+            return shapeFunc.get(); // this is equivalent to calling the constructor of the shape
         }
+        // else
         throw new IllegalArgumentException("No such shape in our factory: " + shapeType.name());
     }
 }

@@ -6,6 +6,9 @@ public class Main {
 
         ShapeFactory shapeFactory = new ShapeFactory();
         shapeFactory.register(ShapeType.CIRCLE, Circle::new);
+        // same code with lambda
+        // shapeFactory.register(ShapeType.CIRCLE, () -> new Circle());
+
         shapeFactory.register(ShapeType.RECTANGLE, Rectangle::new);
         shapeFactory.register(ShapeType.TRIANGLE, Triangle::new);
 
