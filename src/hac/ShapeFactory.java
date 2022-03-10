@@ -13,8 +13,7 @@ public class ShapeFactory {
 
     final static Map<ShapeType, Supplier<Shape>> map = new HashMap<>();
 
-    /**
-     * Constructor
+    /** this is where we register new classes of shapes.
      * Supplier is an interface that has a get() method to execute a function.
      * in this case we register a supplier for each shape type which is a reference to the "new" method.
      * The constructors of shapes are zero-argument methods.
@@ -31,7 +30,7 @@ public class ShapeFactory {
      */
     public Shape getShape(ShapeType shapeType) {
         // get the supplier for the shape type: a reference to the "new" method
-        Supplier<Shape> shapeFunc = map.get(shapeType);
+        Supplier<Shape> shapeFunc = map.get(shapeType); //
 
         if (shapeFunc != null) {
             return shapeFunc.get(); // this is equivalent to calling the constructor of the shape
