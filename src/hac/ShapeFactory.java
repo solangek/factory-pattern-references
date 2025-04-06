@@ -13,10 +13,13 @@ public class ShapeFactory {
 
     final static Map<ShapeType, Supplier<Shape>> map = new HashMap<>();
 
-    /** this is where we register new classes of shapes.
-     * Supplier is an interface that has a get() method to execute a function.
+    /**
+     * this is where we register new classes of shapes.
+     *  Supplier is an interface that has a get() method to execute a function.
      * in this case we register a supplier for each shape type which is a reference to the "new" method.
      * The constructors of shapes are zero-argument methods.
+     * @param type the type of shape
+     * @param shapeCreateFunction a reference to the constructor of the shape
      */
     public static void register(ShapeType type, Supplier<Shape> shapeCreateFunction) {
         map.put(type, shapeCreateFunction);
@@ -38,4 +41,5 @@ public class ShapeFactory {
         // else
         throw new IllegalArgumentException("No such shape in our factory: " + shapeType.name());
     }
+
 }
